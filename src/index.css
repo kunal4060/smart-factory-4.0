@@ -1,0 +1,57 @@
+@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+
+@theme {
+  /* Industrial dark palette — grayscale-first per ISA-101 */
+  --color-sf-bg: #14171b;
+  --color-sf-panel: #1b1f23;
+  --color-sf-panel2: #20262c;
+  --color-sf-border: #2a2f36;
+  --color-sf-text: #e6e9ee;
+  --color-sf-muted: #9aa3af;
+  --color-sf-faint: #5c6570;
+
+  /* Semaphore colors — reserved for status/alarms ONLY */
+  --color-sf-critical: #e22028;
+  --color-sf-high: #ec8629;
+  --color-sf-medium: #f5e11b;
+  --color-sf-info: #4da3ff;
+  --color-sf-ok: #8a938f;
+
+  /* Restrained interactive accent */
+  --color-sf-accent: #4da3ff;
+
+  --font-sans: 'Inter', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+}
+
+html, body {
+  background-color: var(--color-sf-bg);
+  color: var(--color-sf-text);
+  font-family: var(--font-sans);
+  font-size: 14px;
+  margin: 0;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+/* Tabular numbers for all data readouts */
+.tnum {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Thin scrollbars */
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-track { background: #14171b; }
+::-webkit-scrollbar-thumb { background: #2a2f36; border-radius: 4px; }
+
+/* Alarm flash animation — only for unacknowledged critical */
+@keyframes sf-alarm-flash {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.35; }
+}
+.sf-alarm-flash {
+  animation: sf-alarm-flash 1.2s ease-in-out infinite;
+}
